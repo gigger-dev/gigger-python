@@ -1,0 +1,74 @@
+[tool.poetry]
+name = "gigger-server"
+version = "0.1.0"
+description = "Server For Gigger App"
+authors = ["YeLinAung <40236753+b14cknc0d3@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.0"
+pydantic-settings = "^2.5.2"
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.35"}
+asyncpg = "^0.29.0"
+bcrypt = "^4.2.0"
+python-jose = "^3.3.0"
+uvicorn = "^0.31.0"
+pydantic = {extras = ["email"], version = "^2.9.2"}
+sendgrid = "^6.11.0"
+typing-inspect = "^0.9.0"
+boto3 = "^1.35.49"
+python-multipart = "^0.0.16"
+coverage = "^7.6.4"
+taskiq = "^0.11.10"
+taskiq-fastapi = "^0.3.3"
+taskiq-aio-pika = "^0.4.1"
+taskiq-redis = "^1.0.2"
+firebase-admin = "^6.6.0"
+sentry-sdk = {extras = ["fastapi"], version = "^2.20.0"}
+stream-chat = "^4.20.0"
+
+
+[tool.poetry.group.dev.dependencies]
+alembic = "^1.13.3"
+typer = "^0.12.5"
+pytest-asyncio = "^0.24.0"
+aiosqlite = "^0.20.0"
+httpx = "^0.27.2"
+faker = "^33.1.0"
+ruff = "^0.9.6"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.ruff.lint]
+extend-select = ["I"]
+
+
+
+
+[tool.coverage.run]
+omit = [
+    "*/tests/*",
+    "*/tests_e2e/*",
+    "__init__.py"
+
+]
+
+[tool.coverage.report]
+exclude_also = [
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+    ]
